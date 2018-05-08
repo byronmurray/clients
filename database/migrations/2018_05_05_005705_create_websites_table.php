@@ -17,6 +17,7 @@ class CreateWebsitesTable extends Migration
             $table->increments('id');
             $table->integer('client_id');
             $table->string('expires');
+            $table->string('created_by');
             $table->string('start');
             $table->boolean('ssl');
             $table->timestamps();

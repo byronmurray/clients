@@ -27,10 +27,10 @@ class WebsiteController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function show( Website $website )
+  public function show( $id )
   {
 
-      $website = Website::find($website);
+      $website = Website::where( 'client_id', $id )->first();
 
       return view('websites.show', compact('website'));
   }

@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -72,23 +73,17 @@
             </div>
         </nav>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">@yield('title')</div>
+        <section class="section">
+          <div class="container">
 
-                        <div class="panel-body">
-
-                            @yield('content')
+            <h1 class="title">
+              @yield('title')
+            </h1>
+            @yield('content')
 
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+          </div>
+        </section>
 
     </div>
 

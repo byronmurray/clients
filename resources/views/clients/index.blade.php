@@ -4,14 +4,14 @@
 
 @section('content')
 
-<ul class="list-group">
+<ul class="panel list-group">
   @foreach ($clients as $client)
     @if ($client->website)
-      <a href="websites/{{ $client->website->id }}">
+      <a href="websites/{{ $client->id }}" class="panel-block list-group-item">
     @else
-      <a href="#">
+      <a href="#" class="panel-block list-group-item">
     @endif
-      <li class="list-group-item">{{ $client->company }}</li>
+      {{ $client->company }}
     </a>
   @endforeach
 </ul>
