@@ -10,6 +10,14 @@ class Client extends Model
     return $this->hasMany(Contact::class);
   }
 
+  public function notes() {
+    return $this->hasMany(Note::class);
+  }
+
+  public function logins() {
+    return $this->hasMany(Login::class);
+  }
+
   public function website() {
     return $this->hasOne(Website::class);
   }

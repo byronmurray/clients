@@ -4,7 +4,10 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 
+use App\Note;
+use App\Login;
 use App\Client;
+use App\Domain;
 use App\Contact;
 use App\Website;
 
@@ -24,7 +27,10 @@ class DatabaseSeeder extends Seeder
 
         $faker = Faker::create();
 
-        for ($i=0; $i < 5 ; $i++) {
+        $no_clients = 5;
+        $no_websites = $no_clients;
+
+        for ($i=0; $i < $no_clients ; $i++) {
           $Client = new Client;
           $Client->company = $faker->company;
           $Client->save();
@@ -32,20 +38,48 @@ class DatabaseSeeder extends Seeder
 
         for ($i=0; $i < 10 ; $i++) {
           $Contact = new Contact;
-          $Contact->client_id = rand(1,5);
+          $Contact->client_id = rand(1, $no_clients);
           $Contact->name = $faker->name;
           $Contact->phone = $faker->e164PhoneNumber;
           $Contact->email = $faker->email;
           $Contact->save();
         }
 
-        for ($i=0; $i < 8 ; $i++) {
+        for ($i=0; $i < $no_website ; $i++) {
           $Website = new Website;
-          $Website->client_id = rand(1,5);
-          $Website->url = $faker->url;
+          $Website->client_id = rand(1, $no_clients);
+          $Website->start = $faker->date($format = 'd-m-Y', $max = 'now');
           $Website->expires = $faker->date($format = 'd-m-Y', $max = 'now');
           $Website->ssl = rand(0,1);
           $Website->save();
+        }
+
+        for ($i=0; $i < 20 ; $i++) {
+          $Domain = new Domain;
+          $Domain->website_id = rand(1, $no_website);
+          $Domain->url = $faker->url;
+          $Domain->primary = rand(0,1);
+          $Domain->note = $faker->sentence(5, true);
+          $Domain->save();
+        }
+
+        for ($i=0; $i < 8 ; $i++) {
+          $login = new Login;
+          $login->client_id = rand(1, $no_clients);
+          $Login->name = $faker->name;
+          $login->url = $faker->url;
+          $Login->username = $faker->userName;
+          $Login->password = $faker->password;
+          $Login->note = $faker->sentence(5, true);
+          $login->save();
+        }
+
+        for ($i=0; $i < 8 ; $i++) {
+          $Note = new Note;
+          $Note->client_id = rand(1, $no_clients);
+          $Note->title = $faker->sentence(2, true);
+          $Note->body = $faker->paragraph(2, true);
+          $Note->save();
         }
 
     }
