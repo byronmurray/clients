@@ -12,6 +12,9 @@
 */
 
 Route::get('/', 'ClientController@index');
+Route::get('/tabs', function(){
+  return view('tabs');
+});
 
 Route::resource('clients', 'ClientController');
 Route::resource('contacts', 'ContactController');
