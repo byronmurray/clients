@@ -7,7 +7,7 @@
 <ul class="panel list-group">
   @foreach ($clients as $client)
     @if ($client->website)
-      <a href="websites/{{ $client->id }}" class="panel-block list-group-item">
+      <a href="clients/{{ $client->id }}" class="panel-block list-group-item">
     @else
       <a href="#" class="panel-block list-group-item">
     @endif
