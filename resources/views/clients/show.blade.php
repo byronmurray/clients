@@ -149,13 +149,4 @@
 
   </tabs>
 
-
-
-
-
-
-
-
-
-
 @endsection
