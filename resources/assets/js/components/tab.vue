@@ -1,6 +1,6 @@
 <template>
 
-      <div class="">
+      <div v-show="isActive">
         <slot></slot>
       </div>
 
@@ -18,6 +18,11 @@
           return {
             isActive: false
           };
+        },
+        computed: {
+          href() {
+            return '#' + this.name.toLowerCase().replace(/ /g, '-');
+          }
         },
         mounted() {
           this.isActive = this.selected;
