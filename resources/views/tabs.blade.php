@@ -4,7 +4,7 @@
 
 <tabs>
 
-  <tab name="about">
+  <tab name="about" :selected="true">
     <h1>Here is the content for about tab</h1>
   </tab>
 
